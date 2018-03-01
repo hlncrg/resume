@@ -1,0 +1,79 @@
+% Define new list and tabular enivronments that can be changed depending
+% on layout goals
+
+% For normal bulleted list
+\newenvironment{cvlist}
+{
+  \begin{list}{}
+    { \setlength{\itemsep}{0pt}      \setlength{\parsep}{3pt}
+      \setlength{\topsep}{3pt}       \setlength{\partopsep}{0pt}
+      \setlength{\labelwidth}{1em}
+      \setlength{\labelsep}{0.5em} } 
+}{
+  \end{list}
+}
+% For list within list
+\newenvironment{cvsublist}
+{
+  \begin{list}{$-$}
+    { \setlength{\itemsep}{0pt}    \setlength{\parsep}{0pt}
+      \setlength{\topsep}{0pt}     \setlength{\partopsep}{0pt}
+      \setlength{\leftmargin}{1em} \setlength{\labelwidth}{1.5em}
+      \setlength{\labelsep}{0.5em} } 
+}{
+  \end{list}
+}
+
+% Turtles all the way down
+\newenvironment{cvsubsublist}
+{
+  \begin{list}{$\cdot$}
+    { \setlength{\itemsep}{0pt}    \setlength{\parsep}{0pt}
+      \setlength{\topsep}{0pt}     \setlength{\partopsep}{0pt}
+      \setlength{\leftmargin}{1em} \setlength{\labelwidth}{1.5em}
+      \setlength{\labelsep}{0.5em} }
+}{
+  \end{list}
+}
+
+
+
+% For tables (no bullets), e.g. listing skills, languages
+\newenvironment{cvtabular}[2][cbt]
+{\begin{tabular}[#1]{#2}}
+{\end{tabular}}
+\newcommand{\sectionheader}[1]
+{
+  
+  {\large{\bf #1}}}
+
+\documentclass[a4paper,10pt]{article}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+% Sets the page to 8.5in to 11in with 0.5in margins
+\usepackage[vcentering,dvips]{geometry}
+\geometry{verbose,tmargin=0.5in,bmargin=0.5in,lmargin=0.5in,rmargin=0.5in,headsep=0.5in} % 0.5
+\geometry{papersize={8.5in,11in},total={8.5in,11in}}
+
+\begin{document}
+
+\begin{center}
+{\bf {\Huge Helen Craig}}
+\end{center}
+
+% no page numbers
+\pagestyle{empty}
+
+%% Add, remove or comment, uncomment sections below:
+\input{Address}
+\input{Experience}
+\input{Education}
+
+\vspace{2pt}
+
+\textbf{Laguages:} Python (primary), C, Java, JavaScript, C++ 
+
+\textbf{Tools:} NLTK, Spacy, Stanford CoreNLP, Scikit-Learn, TensorFlow, AWS, Matplotlib
+
+\end{document}
